@@ -7,10 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "prepare": "husky install",
     "format": "prettier --write .",
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx pretty-quick --staged ng lint ng test",
+      "pre-push": "ng build --aot true"
+    }
   },
   "dependencies": {
     "clsx": "^2.1.0",
@@ -26,6 +33,7 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.1.1",
+    "husky": "^9.0.11",
     "postcss": "^8",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
